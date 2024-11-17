@@ -5,20 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Описание сайта">
 
-	<link rel="icon" type="img/x-icon" href="/webdevelop.guide/storage/favicon.ico">
+	<link rel="icon" type="img/x-icon" href="storage/favicon.ico">
 	<title>Сайт-туториал</title>
-	<link rel="stylesheet" href="/webdevelop.guide/storage/main/styles.css">
-	<script type="text/javascript" src="/webdevelop.guide/storage/main/scripts/site.js" defer></script>
+	<link rel="stylesheet" href="storage/main/styles.css">
+	<script type="text/javascript" src="storage/main/scripts/site.js" defer></script>
 </head>
 <body>
 	<header>
 		<div id="info" class="space-between" style="width: 100%;" >
-			<span>Руководство веб-разработчика</span>
+			<span>Работа сайта</span>
 			<div id="lang_me">
 				<div class="selectMenu">
-					<button id="russian" onclick="selectLang('RU')" class="current">RU</button>
-					<button id="english" onclick="selectLang('EN')" class="">EN</button>
-					<button id="azeri" onclick="selectLang('AZ')" class="">AZ</button>
+					<button onclick="selectLang('ru')">RU</button>
+					<button onclick="selectLang('en')">EN</button>
 				</div>
 				<span>Mandi_OS©</span>
 			</div>
@@ -31,7 +30,7 @@
 		<div id="home" class="localScreen">
 			<main>
 				<span class="h1">Добро пожаловать!</span>
-				<span class="h2">&nbsp &nbsp &nbsp &nbspв руководство веб-разработчика</span>
+				<span class="h2">&nbsp &nbsp &nbsp &nbspв документацию веб-разработчика</span>
 				<span class="br30"></span>
 				<span>
 					Общее руководство по разработке сайтов, без воды и без нудных документаций.
@@ -39,8 +38,8 @@
 				<span class="br30"></span>
 				<span class="br30"></span>
 				<span><hr><b>Все статьи:</b></span>			
-				<div class="card">
-					<img src="/webdevelop.guide/storage/main/img/previews/siteWork.webp">
+				<div class="card flex-line">
+					<img src="storage/main/img/previews/siteWork.webp">
 					<span>
 						<b class="link siteWork">Работа сайта</b>
 						<span class="br10"></span>
@@ -73,10 +72,10 @@
 					Вот так это выглядит:
 				</span>
 				<br>
-				<img src="/webdevelop.guide/storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
+				<img src="storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
 				<br>
 				<span>
-					По умолчанию у всех элементов стоит авто-настройка - auto. Однако мы можем задать и свое значение через CSS:
+					По умолчанию у всех элементов стоит авто-настройка - 0. Однако мы можем задать и свое значение через CSS:
 					<code class="code-inline">z-index: [уровень];</code> или JavaScript:
 				</span>
 				<pre><code>element.zIndex = [уровень];
@@ -100,20 +99,20 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 					Сервер может вернуть Клиенту любой ответ, однако не факт, что Клиент сможет его обработать правильно. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.<br>
 				</span>
 				<br>
-				<img src="/webdevelop.guide/storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
+				<img src="storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
 				<span class="br20" hidden></span>
 				<span class="h2 mtop">Компиляция</span><hr>
 				<span>
 					Теперь то, как браузер компилирует наш код. Браузер компилирует(сканирует, понимает и выполняет) сайт в такой последовательности:
 				</span>
 				<br>
-				<img src="/webdevelop.guide/storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
+				<img src="storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
 				<span class="br10" hidden></span>
 				<span>
 					У любого документа который мы подвязываем через секцию &lthead&gt есть возможность использования флага <i>defer</i> и <i>async</i>.
 				</span>
-				<pre><code>&ltscript type="text/javascript" src="/webdevelop.guide/storage/script1.js" defer&gt&lt/script&gt
-&ltscript type="text/javascript" src="/webdevelop.guide/storage/script2.js" async&gt&lt/script&gt</code></pre>
+				<pre><code>&ltscript type="text/javascript" src="storage/script1.js" defer&gt&lt/script&gt
+&ltscript type="text/javascript" src="storage/script2.js" async&gt&lt/script&gt</code></pre>
 		<!-- -->
 				<span>
 					<i>Defer</i> означает запуск скрипта уже после компиляции сайта(то есть прогрузки HTML и CSS) и в порядке очереди в которой записаны все скрипты с <i>defer</i> секции &lthead&gt.<br>
@@ -147,3 +146,4 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
 </body>
 </html>
+
