@@ -96,7 +96,7 @@ function setLocalScreen(screenId) {
 		break
 	default:
 		localStorage.setItem('lang', lang)
- 		location.href = "/" + lang.toLowerCase() + "/index.html"
+ 		location.href = "/webdevelop.guide/" + lang.toLowerCase() + "/index.html"
  		subdomain_name = translates[lang.toLowerCase()]["subdomain_name"]
 		break
  	}
