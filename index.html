@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Описание сайта">
 
-	<link rel="icon" type="img/x-icon" href="/storage/favicon.ico">
+	<link rel="icon" type="img/x-icon" href="/webdevelop.guide/storage/favicon.ico">
 	<title>Сайт-туториал</title>
-	<link rel="stylesheet" href="/storage/main/styles.css">
-	<script type="text/javascript" src="/storage/main/scripts/site.js" defer></script>
+	<link rel="stylesheet" href="/webdevelop.guide/storage/main/styles.css">
+	<script type="text/javascript" src="/webdevelop.guide/storage/main/scripts/site.js" defer></script>
 </head>
 <body>
 	<header>
@@ -40,7 +40,7 @@
 				<span class="br30"></span>
 				<span><hr><b>Все статьи:</b></span>			
 				<div class="card">
-					<img src="/storage/main/img/previews/siteWork.webp">
+					<img src="/webdevelop.guide/storage/main/img/previews/siteWork.webp">
 					<span>
 						<b class="link siteWork">Работа сайта</b>
 						<span class="br10"></span>
@@ -73,7 +73,7 @@
 					Вот так это выглядит:
 				</span>
 				<br>
-				<img src="/storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
+				<img src="/webdevelop.guide/storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
 				<br>
 				<span>
 					По умолчанию у всех элементов стоит авто-настройка - auto. Однако мы можем задать и свое значение через CSS:
@@ -100,20 +100,20 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 					Сервер может вернуть Клиенту любой ответ, однако не факт, что Клиент сможет его обработать правильно. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.<br>
 				</span>
 				<br>
-				<img src="/storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
+				<img src="/webdevelop.guide/storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
 				<span class="br20" hidden></span>
 				<span class="h2 mtop">Компиляция</span><hr>
 				<span>
 					Теперь то, как браузер компилирует наш код. Браузер компилирует(сканирует, понимает и выполняет) сайт в такой последовательности:
 				</span>
 				<br>
-				<img src="/storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
+				<img src="/webdevelop.guide/storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
 				<span class="br10" hidden></span>
 				<span>
 					У любого документа который мы подвязываем через секцию &lthead&gt есть возможность использования флага <i>defer</i> и <i>async</i>.
 				</span>
-				<pre><code>&ltscript type="text/javascript" src="/storage/script1.js" defer&gt&lt/script&gt
-&ltscript type="text/javascript" src="/storage/script2.js" async&gt&lt/script&gt</code></pre>
+				<pre><code>&ltscript type="text/javascript" src="/webdevelop.guide/storage/script1.js" defer&gt&lt/script&gt
+&ltscript type="text/javascript" src="/webdevelop.guide/storage/script2.js" async&gt&lt/script&gt</code></pre>
 		<!-- -->
 				<span>
 					<i>Defer</i> означает запуск скрипта уже после компиляции сайта(то есть прогрузки HTML и CSS) и в порядке очереди в которой записаны все скрипты с <i>defer</i> секции &lthead&gt.<br>
