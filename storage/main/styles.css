@@ -95,8 +95,8 @@ html, body {
   .selectMenu {
   	background-color: rgb(80, 85, 155);
   	padding: 2px;
-    display: block;
-    position: absolute;
+    display: flex;
+    flex-direction: row;
     top: 0;
     right: 170px;
   }
@@ -105,26 +105,12 @@ html, body {
     color: #fff;
     outline: none;
     border: none;
-    display: none;
+    display: block;
+    position: relative;
     padding: 0.5rem;
     margin: 2px 0;
     background: rgb(20, 20, 50);
   }
-
-  .selectMenu > button {
-    display: block;
-    position: relative;
-  }
-
-  .selectMenu button:not(.current) {
-    display: none;
-  }
-
-  .selectMenu:hover > button,
-  .selectMenu:focus > button {
-    display: block;
-  }
-
 
   body > header > #nav {
   	display: flex;
