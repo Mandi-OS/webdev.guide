@@ -25,7 +25,7 @@ function readLocalStorage() {
 	if (localStorage.getItem('last_page') === null) { localStorage.setItem('last_page', 'home') }
 	// Subdomain_name
 	if (localStorage.getItem('subdomain_name') === null) {
-		localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang').toLowerCase()]["subdomain_name"]))
+		localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang')]["subdomain_name"]))
 	}
 	subdomain_name = JSON.parse(localStorage.getItem('subdomain_name'))
 }
