@@ -12,9 +12,16 @@
 </head>
 <body>
 	<header>
-		<div class="flex-line space-between" style="width: 100%;" >
-			<span>Работа сайта</span>
-			<span>Mandi_OS©</span>
+		<div id="info" class="space-between" style="width: 100%;" >
+			<span>Руководство веб-разработчика</span>
+			<div id="lang_me">
+				<div class="selectMenu">
+					<button id="russian" onclick="selectLang('RU')" class="current">RU</button>
+					<button id="english" onclick="selectLang('EN')" class="">EN</button>
+					<button id="azeri" onclick="selectLang('AZ')" class="">AZ</button>
+				</div>
+				<span>Mandi_OS©</span>
+			</div>
 		</div>
 		<ul id="nav" style="user-select: none;">
 		</ul>
@@ -23,9 +30,20 @@
 	<div class="globalScreen">
 		<div id="home" class="localScreen">
 			<main>
-				<div class="card flex-line">
-					<img src="storage/main/img/siteWork.webp">
-					<span><span>Работа сайта</span><br>
+				<span class="h1">Добро пожаловать!</span>
+				<span class="h2">&nbsp &nbsp &nbsp &nbspв руководство веб-разработчика</span>
+				<span class="br30"></span>
+				<span>
+					Общее руководство по разработке сайтов, без воды и без нудных документаций.
+				</span>
+				<span class="br30"></span>
+				<span class="br30"></span>
+				<span><hr><b>Все статьи:</b></span>			
+				<div class="card">
+					<img src="storage/main/img/previews/siteWork.webp">
+					<span>
+						<b class="link siteWork">Работа сайта</b>
+						<span class="br10"></span>
 						Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript.
 					</span>
 				</div>
@@ -55,10 +73,10 @@
 					Вот так это выглядит:
 				</span>
 				<br>
-				<img src="storage/main/img/siteWork1.webp" alt="рис. 1">
+				<img src="storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
 				<br>
 				<span>
-					По умолчанию у всех элементов стоит авто-настройка - 0. Однако мы можем задать и свое значение через CSS:
+					По умолчанию у всех элементов стоит авто-настройка - auto. Однако мы можем задать и свое значение через CSS:
 					<code class="code-inline">z-index: [уровень];</code> или JavaScript:
 				</span>
 				<pre><code>element.zIndex = [уровень];
@@ -71,28 +89,43 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 				<span class="h2 mtop">Концепция сервер-клиент</span><hr>
 				<span>
 					Не считая обычные локальные сети, эта концепция присутствует везде. Суть ее заключается в обмене сообщениями между сервером и клиентом.<br>
+					<span class="br10" hidden></span>
 					<b>Клиентом</b> является сам пользователь, и то что происходит только у него, локально, не обращаясь к серверу.<br>
 					<b class="link server">Сервер</b> же является "главным управлением", он раздает всем клиентам указания и хранит данные.<br>
+					Также между Сервером и Клиентом часто есть "почтальон", или же <b>Хостинг</b> - один из самых известных "Cloudflare".<br>
+					<span class="br5" hidden></span>
+					<b>Хостинг</b> можно сравнить с КПП. Он точно также старается обеспечить безопасное соединение(въезд\выезд), а также часто имеет защиту от хакерских атак.<br>
 					<span class="br10" hidden></span>
-					Например на странице банка когда мы переходим на вкладку "История переводов", клиент просит у сервера эту историю, после чего обрабатывает скриптом и добавляет в список который мы видим.<br>
-					Сервер очевидно в качестве ответа может вернуть клиенту что угодно, но не факт что клиент это разберет. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.
+					К примеру на странице банка когда мы переходим на вкладку "История переводов", клиент просит у сервера эту историю, после чего обрабатывает скриптом и добавляет в список который мы видим.<br>
+					Сервер может вернуть Клиенту любой ответ, однако не факт, что Клиент сможет его обработать правильно. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.<br>
 				</span>
 				<br>
+				<img src="storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
+				<span class="br20" hidden></span>
 				<span class="h2 mtop">Компиляция</span><hr>
 				<span>
-					Теперь то, как браузер компилирует(сканирует, понимает и выполняет) наш код.<br>
-					У любого документа который мы подвязываем через секцию head есть возможность использования флага <i>defer</i>.
+					Теперь то, как браузер компилирует наш код. Браузер компилирует(сканирует, понимает и выполняет) сайт в такой последовательности:
 				</span>
-				<pre><code>&ltscript type="text/javascript" src="storage/script.js" defer&gt&lt/script&gt</code></pre>
+				<br>
+				<img src="storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
+				<span class="br10" hidden></span>
 				<span>
-					<i>Defer</i> означает использование документа уже после компиляции сайта(то есть прогрузки HTML и CSS).<br>
-					Браузер компилирует сайт в такой последовательности:
+					У любого документа который мы подвязываем через секцию &lthead&gt есть возможность использования флага <i>defer</i> и <i>async</i>.
 				</span>
-				<img src="storage/main/img/siteWork2.png" alt="рис. 2">
+				<pre><code>&ltscript type="text/javascript" src="storage/script1.js" defer&gt&lt/script&gt
+&ltscript type="text/javascript" src="storage/script2.js" async&gt&lt/script&gt</code></pre>
+		<!-- -->
 				<span>
-					Применение <i>defer</i> очень важно, ведь большинство сайтов само-воспроизводимые,
-					то есть строят себя сами, и например в случае с JavaScript это безусловно очень полезный элемент работы.
+					<i>Defer</i> означает запуск скрипта уже после компиляции сайта(то есть прогрузки HTML и CSS) и в порядке очереди в которой записаны все скрипты с <i>defer</i> секции &lthead&gt.<br>
+					<i>Async</i> означает запуск скрипта сразу после его загрузки, независимо от стадии компиляции сайта и позиции в очереди.<br>
 				</span>
+				<span class="br10" hidden></span>
+				<span>
+					<i>Async</i> в отличии от <i>defer</i> применяется значительно реже.<br>
+					А вот применение <i>defer</i> очень важно, ведь большинство сайтов само-воспроизводимые,
+					то есть строят себя сами, и <i>defer</i> часто незаменимый элемент работы.
+				</span>
+
 			</main>
 			<footer>
 				<span>
@@ -114,4 +147,3 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
 </body>
 </html>
-
