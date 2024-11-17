@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="az-AZ">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Описание сайта">
+
+	<link rel="icon" type="img/x-icon" href="../storage/favicon.ico">
+	<title>Сайт-туториал</title>
+	<link rel="stylesheet" href="../storage/main/styles.css">
+	<script type="text/javascript" src="../storage/main/scripts/site.js" defer></script>
+</head>
+<body>
+	<header>
+		<div id="info" class="space-between" style="width: 100%;" >
+			<span>Veb Tərtibatçı Bələdçisi</span>
+			<div id="lang_me">
+				<div class="selectMenu">
+					<button id="russian" onclick="selectLang('RU')" class="current">RU</button>
+					<button id="english" onclick="selectLang('EN')" class="">EN</button>
+					<button id="azeri" onclick="selectLang('AZ')" class="">AZ</button>
+				</div>
+				<span>Mandi_OS©</span>
+			</div>
+		</div>
+		<ul id="nav" style="user-select: none;">
+		</ul>
+	</header>
+
+	<div class="globalScreen">
+		<div id="home" class="localScreen">
+			<main>
+				<span class="h1">Xoş gəldiniz! </span>
+				<span class="h2">&nbsp &nbsp &nbsp &nbspveb tərtibatçısının təlimatına </span>
+				<span class="br30"></span>
+				<span>
+					Təlaşsız və yorucu sənədlər olmadan veb saytın inkişafı üçün ümumi bələdçi. 
+				</span>
+				<span class="br30"></span>
+				<span class="br30"></span>
+				<span><hr><b>Bütün məqalələr:</b></span>			
+				<div class="card">
+					<img src="../storage/main/img/previews/siteWork.webp">
+					<span>
+						<b class="link siteWork">Saytın əməliyyatı</b>
+						<span class="br10"></span>
+						Sayt 3D layering 2V qat, adətən stilize CSS və JavaScript ilə təchiz olunur.
+					</span>
+				</div>
+			</main>
+			<footer>
+				<span>
+					<i>HTML</i>, <i>CSS</i> üçün tam bələdçi olan sayt və <i>JavaScript</i>.<br>
+					Bütün mövzuları olan menyunun üstündə seçilmiş mövzunun təsviri görünəcəkdir.
+				</span>
+			</footer>
+		</div>
+		<div id="siteWork" class="localScreen hidden">
+			<main>
+				<span class="h1">Saytın əməliyyatı .</span><br>
+				<span class="h2">İş sahəsi</span><hr>
+				<span>
+					Hər saytın <b>XYZ</b>oxları var.<br>
+					&nbsp <b>X</b> - eni(1D), <b>Y</b> - hündürlük(2D), <b>Z</b> - qat səviyyəsi(3D).<br>
+					<span class="br5" hidden></span>
+					Bir təbəqənin nə olduğunu soruşursunuz və hər şeyi 3d düzdə görsəm niyə 2D?<br>
+					<span class="br10" hidden></span>
+					- Cavab verirəm: bütün elementlərin hündürlükdə öz mövqeyi var. Bir qutu təsəvvür edin ki, 
+					biz bir dəstə yumşaq oyuncaq eskiz etdik, bağladıq və yalnız bir şəffaf divarımız var.<br>
+					İndi qutunu sıxacağıq və içindəki şəffaf divardan baxanda yalnız görəcəyik yumşaq oyuncaqların 
+					"təbəqələri" bir-birinə qatlanmışdır.<br> Sayt vəziyyətində bu divar brauzer ekranıdır və elementlərimiz 
+					yumşaq oyuncaqlardır. Belə görünür:
+				</span>
+				<br>
+				<img src="../storage/main/img/siteWork/levelsOnSite.webp" alt="Saytlarda layers">
+				<br>
+				<span>
+					Varsayılan olaraq, bütün elementlər var Avtomatik quraşdırma-auto. Bununla birlikdə, CSS vasitəsilə dəyərimizi də təyin edə bilərik:
+					<code class="code-inline">z-index: [layer];</code> və ya JavaScript:
+				</span>
+				<pre><code>element.zIndex = [layer];
+element.style.zIndex = "[layer]"; // Üslublar vasitəsilə</code></pre>
+		<!-- -->
+				<span>
+					Ümumiyyətlə header, footer, nav və müxtəlif açılan menyular kimi elementlərdə istifadə olunur.
+				</span>
+				<br>
+				<span class="h2 mtop">Server-müştəri konsepsiyası</span><hr>
+				<span>
+					Adi yerli şəbəkələri nəzərə almasaq, bu konsepsiya hər yerdə mövcuddur. Onun mahiyyəti server və müştəri arasında mesaj mübadiləsidir.<br>
+					<span class="br10" hidden></span>
+					<b>Müştəri</b> İstifadəçinin özüdür və serverə müraciət etmədən yalnız yerli olaraq baş verənlər.<br>
+					<b class="link server">Server</b> "baş idarəetmə" dir, bütün müştərilərə təlimatlar verir və məlumatları saxlayır.<br>
+					Ayrıca, server və müştəri arasında tez - tez "poçtalyon", və ya <b>Hosting</b> ən məşhur "Cloudflare" dən biridir.<br>
+					<span class="br5" hidden></span>
+					<b>Hosting</b> PPC ilə müqayisə edilə bilər. Həm də təhlükəsiz bir əlaqə (giriş / çıxış) təmin etməyə çalışır və tez-tez haker hücumlarından qorunur.<br>
+					<span class="br10" hidden></span>
+					Məsələn, bank səhifəsində "tərcümə tarixi" sekmesine keçdiyimiz zaman müştəri serverdən bu tarixi soruşur, sonra skriptlə işləyir və gördüyümüz siyahıya əlavə edir.<br>
+					Server istənilən cavabı müştəriyə qaytara bilər, lakin müştərinin onu düzgün idarə edə biləcəyi bir həqiqət deyil. Adətən, inkişaf etdiricilər uyğunluğu maksimum dərəcədə artırmağa çalışırlar və səhv işlənməsini də əlavə edirlər.<br>
+				</span>
+				<br>
+				<img src="../storage/main/img/siteWork/ServerClient.png" alt="Server müştəri ilə mesaj mübadiləsi aparır">
+				<span class="br20" hidden></span>
+				<span class="h2 mtop">Kompilyasiya</span><hr>
+				<span>
+					İndi brauzer kodumuzu necə tərtib edir. Brauzer saytı bu ardıcıllıqla tərtib edir(tarar, başa düşür və icra edir):
+				</span>
+				<br>
+				<img src="../storage/main/img/siteWork/compilationQuery1.png" alt="Saytın tərtib edilməsi proseduru">
+				<span class="br10" hidden></span>
+				<span>
+					&lthead&gt bölməsi vasitəsilə bağladığımız hər hansı bir sənəddə <i>defer</i> və <i>async</i>bayrağından istifadə etmək imkanı var.
+				</span>
+				<pre><code>&ltscript type="text/javascript" src="../storage/script1.js" defer&gt&lt/script&gt
+&ltscript type="text/javascript" src="../storage/script2.js" async&gt&lt/script&gt</code></pre>
+		<!-- -->
+				<span>
+					<i>Defer</i> saytı tərtib etdikdən sonra(yəni HTML və CSS-i yüklədikdən) və bütün skriptlərin <i>defer</i> bölməsindən &lthead&gt yazıldığı ilk növbədə skript işlətmək deməkdir.<br>
+					<i>Async</i> saytın tərtib mərhələsindən və növbədəki mövqeyindən asılı olmayaraq skript yükləndikdən dərhal sonra işə salmaq deməkdir.<br>
+				</span>
+				<span class="br10" hidden></span>
+				<span>
+					<i>Async</i> <i>defer</i> - dən fərqli olaraq daha az tətbiq olunur.<br>
+					Ancaq tətbiq <i>defer</i> çox vacibdir, çünki əksər saytlar özünü oynayır, 
+					yəni özlərini qururlar və <i>defer</i> tez-tez işin əvəzolunmaz elementidir.
+				</span>
+
+			</main>
+			<footer>
+				<span>
+					Sayt 3D layering 2V qat, adətən stilize CSS və JavaScript ilə təchiz olunur.
+				</span>
+			</footer>
+		</div>
+		<div id="server" class="localScreen hidden">
+			<main>
+				<span>Server screen</span>
+			</main>
+			<footer>
+				<span>
+					Something...
+				</span>
+			</footer>
+		</div>
+	</div>
+	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+</body>
+</html>
+

@@ -1,0 +1,309 @@
+@font-face {
+  font-family: "Graphik";
+  src: url("../fonts/graphik-regular.woff2")format("woff2");
+  font-style:normal;
+  font-weight:400;
+  font-display:fallback
+}
+@font-face {
+  font-family:"Graphik";
+  src:url("../fonts/graphik-regular-italic.woff2")format("woff2");
+  font-style:italic;
+  font-weight:400;
+  font-display:fallback
+}
+@font-face {
+  font-family:"Graphik";
+  src:url("../fonts/graphik-medium.woff2")format("woff2");
+  font-style:normal;
+  font-weight:700;
+  font-display:fallback
+}
+
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--background: lavenderblush;
+		--cardBG: rgb(50, 50, 50);
+		--text: rgba(0, 0, 0, 1);
+		--shadowColor: rgb();
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: rgb(50,52,56);
+		--cardBG: rgb(100, 102, 106);
+		--text: rgba(255, 255, 255, 1);
+		--shadowColor: rgb(100, 100, 100);
+	}
+}
+
+* {
+	font-family: "Graphik", sans-serif;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+  	font-size: 1.25rem;
+}
+
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	background-color: var(--background);
+}
+
+/* Standarts */
+ .hidden { display: none; }
+ .space-between { justify-content: space-between; }
+ .br5 { display: block; height: 5px; width: 1px; }
+ .br10 { display: block; height: 10px; width: 1px; }
+ .br15 { display: block; height: 15px; width: 1px; }
+ .br20 { display: block; height: 20px; width: 1px; }
+ .br25 { display: block; height: 25px; width: 1px; }
+ .br30 { display: block; height: 30px; width: 1px; }
+ .h1,
+ .h2,
+ .h3 {
+	color: var(--text);
+	margin-bottom: 6px;
+ }
+
+/* Site */
+ /* Header */
+  body > header {
+  	 --padding: 20px;
+  	 position: fixed;
+  	 top: 0;
+  	 min-height: 80px;
+  	 width: calc(100vw - (var(--padding) * 2));
+  	 border-radius: 0 0 40px 40px / 30px;
+  	 padding: 5px var(--padding) 5px var(--padding);
+  	 background-color: rgba(32, 78, 138, 0.95);
+  	 color: whitesmoke;
+  	 z-index: 100;
+  }
+
+  body > header > #info {
+	 display: flex;
+	 flex-direction: row;
+  }
+  body > header > #info > #lang_me {
+  	display: flex;
+  	flex-direction: row;
+  }
+
+  .selectMenu {
+  	background-color: rgb(80, 85, 155);
+  	padding: 2px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 170px;
+  }
+
+  .selectMenu button {
+    color: #fff;
+    outline: none;
+    border: none;
+    display: none;
+    padding: 0.5rem;
+    margin: 2px 0;
+    background: rgb(20, 20, 50);
+  }
+
+  .selectMenu > button {
+    display: block;
+    position: relative;
+  }
+
+  .selectMenu button:not(.current) {
+    display: none;
+  }
+
+  .selectMenu:hover > button,
+  .selectMenu:focus > button {
+    display: block;
+  }
+
+
+  body > header > #nav {
+  	display: flex;
+  	flex-direction: row;
+  	width: 100%;
+  	overflow: hidden;
+  	scroll-behavior: smooth;
+  	margin: 20px 0 2.5px 0;
+  	white-space: nowrap;
+  }
+
+  body > header > #nav > li {
+  	margin: 0 5px;
+    padding: 7px 12px;
+    border-radius: 25rem;
+    border: 3px solid white;
+    background-color: rgba(240, 237, 237, 0.1);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease 0s;
+  }
+  body > header > #nav > li:active {
+    background-color: rgba(240, 237, 237, 0.65);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  @media not screen and (pointer: coarse){
+  	body > header > #nav > li:hover {
+    background-color: rgba(240, 237, 237, 0.65);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  	}
+  }
+  body > header > #nav > li.current {
+    background-color: rgba(120, 195, 120, 0.5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  body > header > #nav > li > span { font-size: 1.2rem !important; }
+
+ /* Main */
+  .card {
+  	display: flex;
+  	flex-direction: row;
+  	background-color: var(--cardBG);
+  	border-radius: 20px;
+  	margin: 20px;
+  	padding: 30px;
+  	min-height: 256px;
+  	color: mintcream;
+  	box-shadow: 8px 8px 60px -35px black;
+  }
+
+  .card > img {
+  	height: min(50%, 320px);
+  	width: min(50%, 320px);
+  	margin-right: 10px;
+  }
+
+  .card span {
+  	color: var(--text);
+  	font-size: 1.3rem;
+  	margin-bottom: 5px;
+  }
+
+  main {
+  	margin: 5% 120px 160px 11.5%;
+  	padding: 40px;
+  	box-shadow: 2px 2px 60px -14px var(--shadowColor);
+  	border-radius: 15px;
+  	height: fit-content;
+  }
+  main > span { 
+  	position: relative;
+  	display: block;
+  	color: var(--text); 
+  	line-height: 35px;
+  }
+  main > img {
+  	min-width: 120px;
+  	min-height: 5vh;
+  	max-width: 100%;
+  	max-height: 15vh;
+  }
+
+  span.h1 {
+  	font-size: 1.65rem;
+  }
+  span.h2 {
+  	font-size: 1.4rem;
+  	font-weight: bold;
+  }
+  span.mtop { margin-top: 17px; }
+
+  b.link { 
+	border-bottom: 1px dotted var(--text);
+  	border-width: 4px;
+    cursor: pointer;
+  	transition: border-color 0.5s;
+  }
+  @media not screen and (pointer: coarse){
+  	b.link:hover { border: rgba(0,0,0,0); }
+  	b.link:hover::after {
+  	content: "→";
+  	position: absolute;
+  	margin-left: 10px;
+  	top: 0;
+  	left: 100px;
+  	color: red;
+  	}
+  }
+
+ /* Code */
+  pre {
+      background-color: rgb(86, 86, 86);
+      padding: 12.5px;
+      border-radius: 10px;
+      overflow-x: auto;
+  }
+  pre:not(.code-inline) { margin: 10px 0 20px 0; }
+  	
+  code {
+  	  position: relative;
+  	  text-align: left;
+  	  font-family: monospace !important;
+      color: rgba(199, 222, 233, 1);
+      line-height: 32px;
+      border-radius: 5px;
+  }
+  code.code-inline { margin: 0 7px; text-wrap: nowrap; z-index: 0;}
+  code.code-inline::before {
+  	  content: "";
+      background-color: rgb(86, 86, 86);
+      padding: 4px 8px;
+      border-radius: 10px;
+      width: 98%;
+      height: 95%;
+      position: absolute;
+      z-index: -1;
+      left: -5px;
+      top: -3px;
+  }
+
+ /* Footer */
+  footer {
+  	 --padding: 20px;
+  	 position: fixed;
+  	 width: calc(100vw - (var(--padding) * 2));
+  	 height: min(100px, 7.5vh);
+  	 padding: var(--padding);
+  	 border-radius: 40px 40px 0 0 / 30px;
+  	 background-color: rgba(48, 56, 65, 0.85);
+  	 color: whitesmoke;
+  	 font-size: 1.6rem;
+  	 bottom: 0;
+  	 z-index: 100;
+  }
+  footer::selection { background-color: rgba(0, 30, 60, 0.6);}
+
+ #toStart {
+	z-index: 101;
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 3px solid rgb(80, 84, 90);
+	background: rgba(20, 20, 230, 0.75);
+	background-image: url("./img/toStart.svg");
+	background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+	position: fixed;
+	right: 20px;
+	bottom: min(120px, 13vh);
+	transition: opacity 0.2s;
+ }
+ #toStart:active {
+ 	opacity: 0.65;
+ }
+ @media not screen and (pointer: coarse){
+ 	#toStart:hover {
+ 		opacity: 0.65;
+ 	}
+ }
