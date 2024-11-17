@@ -92,7 +92,7 @@ function setLocalScreen(screenId) {
 		break
 	case "RU":
 		localStorage.setItem('lang', lang)
-		location.href = "/"
+		location.href = "/webdevelop.guide/"
 		break
 	default:
 		localStorage.setItem('lang', lang)
