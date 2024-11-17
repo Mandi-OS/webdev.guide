@@ -1,19 +1,33 @@
 requestAnimationFrame(startApp)
 function startApp() {
 	//selectLang(localStorage.getItem('lang'))
+	readLocalStorage()
 	loadHeader()
+  	setLocalBtn(localStorage.getItem('last_page'))
 	console.log("Site started succesfully!")
 }
 
-let subdomain_name = {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер'}
+let subdomain_name = {}
 const localScreens = document.querySelectorAll('.localScreen')
 translates = {
+	"ru": {
+		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер'}
+	},
 	"en": {
 		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server'}
-	},
-	"az": {
-		"subdomain_name": {'home': 'Əsas səhifə', 'siteWork': 'Saytın əməliyyatı', 'server': 'Server'}
 	}
+}
+
+function readLocalStorage() {
+	// Language
+	if (localStorage.getItem('lang') === null) { localStorage.setItem('lang', 'ru') }
+	// Last page
+	if (localStorage.getItem('last_page') === null) { localStorage.setItem('last_page', 'home') }
+	// Subdomain_name
+	if (localStorage.getItem('subdomain_name') === null) {
+		localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang').toLowerCase()]["subdomain_name"]))
+	}
+	subdomain_name = JSON.parse(localStorage.getItem('subdomain_name'))
 }
 
 // Fill header with local screen links
@@ -36,9 +50,7 @@ function loadHeader() {
 	frame.querySelector('#' + localStorage.getItem('last_page') + "Btn").click()
 }
 
-
 function setLocalScreen(screenId) {
-	const localBtns = document.querySelectorAll('body > header > #nav > li')
 	const screen = document.querySelector(`body > header > #nav #${screenId}`)
 
 	// Current  screen
@@ -51,17 +63,21 @@ function setLocalScreen(screenId) {
         	}
 
         })
-    // Current button
-    localBtns.forEach(
-        function(localBtn) {
-            if (screenId + "Btn" === localBtn.id) {
-                localBtn.classList.add('current')
-            } else {
-                localBtn.classList.remove('current')
-            }
-        })
+  	setLocalBtn(screenId)
     // Remember last page user visited
     localStorage.setItem('last_page', screenId)
+}
+
+function setLocalBtn(screenId) {
+	const localBtns = document.querySelectorAll('body > header > #nav > li')
+	// Current button
+	localBtns.forEach(function(localBtn) {
+        if (screenId + "Btn" === localBtn.id) {
+            localBtn.classList.add('current')
+        } else {
+            localBtn.classList.remove('current')
+        }
+    })
 }
 
 // Scroll navigation menu
@@ -87,17 +103,14 @@ function setLocalScreen(screenId) {
 // Change language
  function selectLang(lang) {
  	switch (lang) {
- 	case null:
-		localStorage.setItem('lang', 'RU')
-		break
-	case "RU":
+	case "ru":
 		localStorage.setItem('lang', lang)
 		location.href = "/webdevelop.guide/"
 		break
 	default:
 		localStorage.setItem('lang', lang)
- 		location.href = "/webdevelop.guide/" + lang.toLowerCase() + "/index.html"
- 		subdomain_name = translates[lang.toLowerCase()]["subdomain_name"]
+ 		localStorage.setItem('subdomain_name', JSON.stringify(translates[lang]["subdomain_name"]))
+ 		location.href = "/webdevelop.guide/" + lang + "/index.html"
 		break
  	}
  }
