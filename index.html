@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Описание сайта">
+
+	<link rel="icon" type="img/x-icon" href="storage/favicon.ico">
+	<title>Сайт-туториал</title>
+	<link rel="stylesheet" href="storage/main/styles.css">
+	<script type="text/javascript" src="storage/main/scripts/site.js" defer></script>
+</head>
+<body>
+	<header>
+		<div class="flex-line space-between" style="width: 100%;" >
+			<span>Работа сайта</span>
+			<span>Mandi_OS©</span>
+		</div>
+		<ul id="nav" style="user-select: none;">
+		</ul>
+	</header>
+
+	<div class="globalScreen">
+		<div id="home" class="localScreen">
+			<main>
+				<div class="card flex-line">
+					<img src="storage/main/img/siteWork.webp">
+					<span><span>Работа сайта</span><br>
+						Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript.
+					</span>
+				</div>
+			</main>
+			<footer>
+				<span>
+					Сайт с полным руководством по базе <i>HTML</i>, <i>CSS</i> и <i>JavaScript</i>.<br>
+					Сверху меню со всеми темами, тут будет появляться описание выбранной темы.
+				</span>
+			</footer>
+		</div>
+		<div id="siteWork" class="localScreen hidden">
+			<main>
+				<span class="h1">Работа сайта.</span><br>
+				<span class="h2">Рабочее пространство</span><hr>
+				<span>
+					У каждого сайта есть оси <b>XYZ</b>.<br>
+					&nbsp <b>X</b> - ширина(1D), <b>Y</b> - высота(2D), <b>Z</b> - уровень слоя(3D).<br>
+					<span class="br5" hidden></span>
+					Вы спросите что за слой, и почему 3D, если я вижу все в 2D - плоским?<br>
+					<span class="br10" hidden></span>
+					- Отвечаю: Все элементы имеют свое положение по высоте. Представьте себе коробку в которую мы 
+					набросали кучу мягких игрушек, закрыли и у нас лишь одна прозрачная стенка.<br>
+					Теперь скомпрессуем коробку, и когда мы посмотрим через прозрачную стенку внутрь нее то мы увидим как раз 
+					сложенные вместе "слои" мягких игрушек.<br>
+					Этой стенкой в случае сайта является экран браузера, а мягкими игрушками наши элементы.
+					Вот так это выглядит:
+				</span>
+				<br>
+				<img src="storage/main/img/siteWork1.webp" alt="рис. 1">
+				<br>
+				<span>
+					По умолчанию у всех элементов стоит авто-настройка - 0. Однако мы можем задать и свое значение через CSS:
+					<code class="code-inline">z-index: [уровень];</code> или JavaScript:
+				</span>
+				<pre><code>element.zIndex = [уровень];
+element.style.zIndex = "[уровень]"; // Через стили</code></pre>
+		<!-- -->
+				<span>
+					Обычно его используют в таких элементах как header, footer, nav и разных выпадающих меню.
+				</span>
+				<br>
+				<span class="h2 mtop">Концепция сервер-клиент</span><hr>
+				<span>
+					Не считая обычные локальные сети, эта концепция присутствует везде. Суть ее заключается в обмене сообщениями между сервером и клиентом.<br>
+					<b>Клиентом</b> является сам пользователь, и то что происходит только у него, локально, не обращаясь к серверу.<br>
+					<b class="link server">Сервер</b> же является "главным управлением", он раздает всем клиентам указания и хранит данные.<br>
+					<span class="br10" hidden></span>
+					Например на странице банка когда мы переходим на вкладку "История переводов", клиент просит у сервера эту историю, после чего обрабатывает скриптом и добавляет в список который мы видим.<br>
+					Сервер очевидно в качестве ответа может вернуть клиенту что угодно, но не факт что клиент это разберет. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.
+				</span>
+				<br>
+				<span class="h2 mtop">Компиляция</span><hr>
+				<span>
+					Теперь то, как браузер компилирует(сканирует, понимает и выполняет) наш код.<br>
+					У любого документа который мы подвязываем через секцию head есть возможность использования флага <i>defer</i>.
+				</span>
+				<pre><code>&ltscript type="text/javascript" src="storage/script.js" defer&gt&lt/script&gt</code></pre>
+				<span>
+					<i>Defer</i> означает использование документа уже после компиляции сайта(то есть прогрузки HTML и CSS).<br>
+					Браузер компилирует сайт в такой последовательности:
+				</span>
+				<img src="storage/main/img/siteWork2.png" alt="рис. 2">
+				<span>
+					Применение <i>defer</i> очень важно, ведь большинство сайтов само-воспроизводимые,
+					то есть строят себя сами, и например в случае с JavaScript это безусловно очень полезный элемент работы.
+				</span>
+			</main>
+			<footer>
+				<span>
+					Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript.
+				</span>
+			</footer>
+		</div>
+		<div id="server" class="localScreen hidden">
+			<main>
+				<span>Serves side link server for mummy</span>
+			</main>
+			<footer>
+				<span>
+					Сайт является
+				</span>
+			</footer>
+		</div>
+	</div>
+	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+</body>
+</html>
+
