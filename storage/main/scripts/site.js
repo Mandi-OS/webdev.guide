@@ -11,10 +11,12 @@ let subdomain_name = {}
 const localScreens = document.querySelectorAll('.localScreen')
 translates = {
 	"ru": {
-		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер'}
+		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер', 'dict': 'Словарь',
+		'devTools': 'DevTools'}
 	},
 	"en": {
-		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server'}
+		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server', 'dict': 'Dictionary',
+		'devTools': 'DevTools'}
 	}
 }
 
@@ -96,6 +98,13 @@ function setLocalBtn(screenId) {
  		setLocalScreen(link.classList[1])
  	})
  })
+ const dicts = document.querySelectorAll('.dict')
+ dicts.forEach(function(dict) {
+ 	dict.addEventListener('click', function() {
+ 		setLocalScreen('dict')
+ 		location.href = '#' + dict.classList[1]
+ 	})
+ })
 
 
 // Change language
@@ -112,3 +121,4 @@ function setLocalBtn(screenId) {
 		break
  	}
  }
+ 
