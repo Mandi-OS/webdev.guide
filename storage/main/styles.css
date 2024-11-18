@@ -39,6 +39,7 @@
 }
 
 * {
+	scroll-margin-top: 35vh;
 	font-family: "Graphik", sans-serif;
 	margin: 0;
 	padding: 0;
@@ -46,6 +47,7 @@
 }
 
 html, body {
+ 	scroll-behavior: smooth;
 	max-width: 100%;
 	overflow-x: hidden;
 	background-color: var(--background);
@@ -194,6 +196,7 @@ html, body {
   	max-height: 15vh;
   }
   main ul { margin-left: 50px; }
+  #dict > main ul li { margin: 5px 0; }
 
   span.h { font-size: 2rem; }
   span.h1 { font-size: 1.65rem; }
@@ -220,13 +223,13 @@ html, body {
   }
   @media not screen and (pointer: coarse){
   	b.link:hover { border: rgba(0,0,0,0); }
-  	b.dict:hover { opacity: 0.75; }
+  	b.dict:hover { opacity: 0.85; }
   	b.dict:hover::after {
   		content: "Словарь→";
   		position: absolute;
   		top: 0px;
   		right: -150px;
-  		background-color: rgba(86, 86, 86, 0.9);
+  		background-color: rgb(86, 86, 86);
   		border-radius: 5px;
   		color: rgb(200, 10, 60);
   		z-index: 1;
