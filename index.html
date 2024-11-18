@@ -19,7 +19,7 @@
 					<button onclick="selectLang('ru')">RU</button>
 					<button onclick="selectLang('en')">EN</button>
 				</div>
-				<span>Mandi_OS©</span>
+				<a href="https://t.me/Mandi_OS666" target="_blank" style="color: var(--text);">Mandi_OS©</a>
 			</div>
 		</div>
 		<ul id="nav" style="user-select: none;">
@@ -43,7 +43,7 @@
 					<span>
 						<b class="link siteWork">Работа сайта</b>
 						<span class="br10"></span>
-						Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript.
+						Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript, также использующий концепцию сервер-клиент.
 					</span>
 				</div>
 			</main>
@@ -75,7 +75,7 @@
 				<img src="storage/main/img/siteWork/levelsOnSite.webp" alt="Слои на сайтах">
 				<br>
 				<span>
-					По умолчанию у всех элементов стоит авто-настройка - 0. Однако мы можем задать и свое значение через CSS:
+					По умолчанию у всех элементов стоит авто-настройка - auto. Однако мы можем задать и свое значение через CSS:
 					<code class="code-inline">z-index: [уровень];</code> или JavaScript:
 				</span>
 				<pre><code>element.zIndex = [уровень];
@@ -97,19 +97,18 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 					<span class="br10" hidden></span>
 					К примеру на странице банка когда мы переходим на вкладку "История переводов", клиент просит у сервера эту историю, после чего обрабатывает скриптом и добавляет в список который мы видим.<br>
 					Сервер может вернуть Клиенту любой ответ, однако не факт, что Клиент сможет его обработать правильно. Обычно разработчики стараются максимизировать совместимость, а также добавляют обработку ошибок.<br>
-				</span>
+				
 				<br>
 				<img src="storage/main/img/siteWork/ServerClient.png" alt="Сервер обменивается с клиентом сообщениями">
 				<span class="br20" hidden></span>
+				</span>
 				<span class="h2 mtop">Компиляция</span><hr>
 				<span>
-					Теперь то, как браузер компилирует наш код. Браузер компилирует(сканирует, понимает и выполняет) сайт в такой последовательности:
-				</span>
+					Теперь то, как браузер <b class="dict Compilation">компилирует</b> наш код. Браузер компилирует сайт в такой последовательности:
 				<br>
 				<img src="storage/main/img/siteWork/compilationQuery1.png" alt="Порядок компиляции сайта">
 				<span class="br10" hidden></span>
-				<span>
-					У любого документа который мы подвязываем через секцию &lthead&gt есть возможность использования флага <i>defer</i> и <i>async</i>.
+					У любого документа который мы подвязываем через секцию &lthead&gt есть возможность использования <b class="dict Flag">флага</b> <i>defer</i> и <i>async</i>.
 				</span>
 				<pre><code>&ltscript type="text/javascript" src="storage/script1.js" defer&gt&lt/script&gt
 &ltscript type="text/javascript" src="storage/script2.js" async&gt&lt/script&gt</code></pre>
@@ -117,28 +116,99 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 				<span>
 					<i>Defer</i> означает запуск скрипта уже после компиляции сайта(то есть прогрузки HTML и CSS) и в порядке очереди в которой записаны все скрипты с <i>defer</i> секции &lthead&gt.<br>
 					<i>Async</i> означает запуск скрипта сразу после его загрузки, независимо от стадии компиляции сайта и позиции в очереди.<br>
-				</span>
 				<span class="br10" hidden></span>
-				<span>
 					<i>Async</i> в отличии от <i>defer</i> применяется значительно реже.<br>
-					А вот применение <i>defer</i> очень важно, ведь большинство сайтов само-воспроизводимые,
-					то есть строят себя сами, и <i>defer</i> часто незаменимый элемент работы.
+					А вот применение <i>defer</i> очень важно, ведь большинство сайтов <b class="dict SelfBuildingSites">само-воспроизводимые</b>, и <i>defer</i> часто незаменимый элемент работы.
 				</span>
-
+				<span class="br20" hidden></span>
+				<span class="h2">Отладка</span><hr>
+				<span>
+					&nbspВо всех браузерах есть окно отладки, в базированных на <b class="dict Chromium">Chromium</b> это DevTools, в Firefox это "Инструменты разработчика". Зачастую это окно можно открыть нажав на F12 или в констекстном меню, типа "Исследовать", "Исходный код страницы" и т.д.
+					<span class="br5" hidden></span>
+					&nbspОбычно там можно увидеть такие <b class="dict DevTools">вкладки</b>:
+					<ul>
+						<li><b class="dict HTMLCode">Весь скомпилированный исходный код страницы</b></li>
+						<li><b class="dict Styles">Стили</b></li>
+						<li><b class="dict Console">Консоль</b></li>
+						<li><b class="dict Sources">Исходники</b></li>
+						<li><b class="dict Network">Мониторинг подключений сайта(Сеть)</b></li>
+						<li><b class="dict Performance">Мониторинг производительности</b></li>
+						<li><b class="dict Memory">Память(Утечки памяти)</b></li>
+						<li><b class="dict Cash">Кэш(Приложение)</b></li>
+						<li><b class="dict DOM">DOM</b></li>
+					</ul>
+					Подробнее <b class="link devTools">здесь.</b>
+				</span>
+				<span class="h2 mtop">
+					<span class="br20" hidden></span>
+					Это было лишь краткое введение в основы. Чем дальше тем интереснее!
+				</span>
 			</main>
 			<footer>
 				<span>
-					Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript.
+					Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript, также использующий концепцию сервер-клиент.
 				</span>
 			</footer>
 		</div>
+		<div id="dict" class="localScreen hidden">
+			<main>
+				<span class="h">Словарь</span>
+				<span class="br5" hidden></span>
+				<span class="h2">&nbsp &nbspТут подробно описаны все понятия, рассортированные по темам.</span><hr>
+				<span class="br30" hidden></span>
+				<span id="Basic" class="h2">Общее</span><hr>
+				<span>
+					<ul>
+						<li id="Compilation"><b>Компиляция</b> - процесс преобразования исходного кода в машинный, или понятный приложению-компилятору(например браузеру).</li>
+						<li id="Flag"><b>Флаг</b> - переменная обычно равная true(правда) либо false(неправда). Например:
+							<pre><code>let drinkCoffeeAtMornings = false;
+if (drinkCoffeeAtMornings) {
+	Sanya.drink("Coffee");
+} else {
+	Sanya.say("Чёртова диета!")
+}</code></pre>
+Если флаг будет true(тоже самое что и 1) то Sanya попьет кофе, а если флаг будет равен false(или 0) то Sanya пожалуется на трудную жизнь.
+				<!--  -->
+						</li>
+						<li id="SelfBuildingSites"><b>Само-воспроизводимые сайты</b> - множество сайтов устроены так, что изначально их страница пуста, и есть только заготовки. После чего уже заполняется контентом, используя скрипты, и реже <b class="dict ServerInjections">серверные инъекции</b>. Например на этом сайте, список всех статей наверху заполняется автоматически с помощью JavaScript.</li>
+						<li><b>Серверные инъекции</b> - код который невидимо(или почти невидимо) для пользователя вставляется в страницу HTML. Например используя PHP сервер может вставить определенный код в зависимости от чего бы то ни было.</li>
+						<li id="Chromium"><b>Ядро(Chromium)</b> - фундамент, на котором строют последующий код приложения. Адаптирован под основные потребности приложения, облегчает последующее программирование. Например в случае с Chromium - это фундамент для некоторых браузеров, из известных Google Chrome, Microsoft Edge.</li>
+						<!-- <li><b></b> - </li> -->
+					</ul>
+				</span>
+				<span id="DevTools" class="h2 mtop">DevTools</span><hr>
+				<span>
+					<ul>
+						<li id="HTMLCode"><b>Инспектор или Элементы</b> - Показывает скомпилированную HTML-структуру текущей страницы вместе с примененными стилями, скриптами и атрибутами.</li>
+						<li id="Styles"><b>Стили</b> - Здесь можно посмотреть и редактировать все таблицы стилей, и отдельно At-правила.</li>
+						<li id="Console"><b>Консоль</b> - Для выполнения команд в реальном времени, вывода ошибок и логов.</li>
+						<li id="Sources"><b>Отладчик или Исходники</b> - Все подключенные файлы и карты исходного кода. В текстовых документах можно устанавливать точки останова(break points) для отладки.</li>
+						<li id="Network"><b>Сеть</b> - Позволяет отслеживать все запросы с сайта: их тип, статус, время загрузки, запрос и ответ.</li>
+						<li id="Performance"><b>Производительность</b> - Для записи и анализа производительности страницы, включая FPS, нагрузку на процессор, задержки рендеринга. Например можно начать запись, после чего включить загрузку игры, остановить запись, и посмотреть как это нагружает систему.</li>
+						<li id="Memory"><b>Память</b> - Используется для анализа утечек памяти, слежения за потреблением и очистки ненужных объектов. Редко используется.</li>
+						<li id="Cash"><b>Приложение</b> - Позволяет просматривать весь кэш: Локальное хранилище, Сессионное хранилище, IndexedDB(очень большое локальное хранилище), Сервисы и Куки-файлы.</li>
+						<li id="DOM"><b>DOM</b> - Полный доступ к сгенерированной структуре DOM - то как браузер видит наш сайт.</li>
+					</ul>
+				</span>
+			</main>
+		</div>
 		<div id="server" class="localScreen hidden">
 			<main>
-				<span>Serves side link server for mummy</span>
+				<span></span>
 			</main>
 			<footer>
 				<span>
-					Сайт является
+					Coming...
+				</span>
+			</footer>
+		</div>
+		<div id="devTools" class="localScreen hidden">
+			<main>
+				<span></span>
+			</main>
+			<footer>
+				<span>
+					Coming...
 				</span>
 			</footer>
 		</div>
@@ -146,4 +216,3 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
 </body>
 </html>
-
