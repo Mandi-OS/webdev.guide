@@ -197,6 +197,7 @@ html, body {
   }
   main ul { margin-left: 50px; }
   #dict > main ul li { margin: 5px 0; }
+  #dict > main ul li:target { color: skyblue; }
 
   span.h { font-size: 2rem; }
   span.h1 { font-size: 1.65rem; }
@@ -223,7 +224,7 @@ html, body {
   }
   @media not screen and (pointer: coarse){
   	b.link:hover { border: rgba(0,0,0,0); }
-  	b.dict:hover { opacity: 0.85; }
+  	b.dict:hover { opacity: 0.9; }
   	b.dict:hover::after {
   		content: "Словарь→";
   		position: absolute;
