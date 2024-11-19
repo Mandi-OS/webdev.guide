@@ -1,42 +1,43 @@
-@font-face {
-  font-family: "Graphik";
-  src: url("../fonts/graphik-regular.woff2")format("woff2");
-  font-style:normal;
-  font-weight:400;
-  font-display:fallback
-}
-@font-face {
-  font-family:"Graphik";
-  src:url("../fonts/graphik-regular-italic.woff2")format("woff2");
-  font-style:italic;
-  font-weight:400;
-  font-display:fallback
-}
-@font-face {
-  font-family:"Graphik";
-  src:url("../fonts/graphik-medium.woff2")format("woff2");
-  font-style:normal;
-  font-weight:700;
-  font-display:fallback
-}
+/* Import */
+ @font-face {
+   font-family: "Graphik";
+   src: url("../fonts/graphik-regular.woff2")format("woff2");
+   font-style:normal;
+   font-weight:400;
+   font-display:fallback
+ }
+ @font-face {
+   font-family:"Graphik";
+   src:url("../fonts/graphik-regular-italic.woff2")format("woff2");
+   font-style:italic;
+   font-weight:400;
+   font-display:fallback
+ }
+ @font-face {
+   font-family:"Graphik";
+   src:url("../fonts/graphik-medium.woff2")format("woff2");
+   font-style:normal;
+   font-weight:700;
+   font-display:fallback
+ }
 
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--background: lavenderblush;
-		--cardBG: rgb(50, 50, 50);
-		--text: rgba(0, 0, 0, 1);
-		--shadowColor: rgb();
-	}
-}
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: rgb(50,52,56);
-		--cardBG: rgb(100, 102, 106);
-		--text: rgba(255, 255, 255, 1);
-		--shadowColor: rgb(100, 100, 100);
-	}
-}
+/* Theme */
+ @media (prefers-color-scheme: light) {
+ 	:root {
+ 		--background: lavenderblush;
+ 		--cardBG: rgb(50, 50, 50);
+ 		--text: rgba(0, 0, 0, 1);
+ 		--shadowColor: rgb();
+ 	}
+ }
+ @media (prefers-color-scheme: dark) {
+ 	:root {
+ 		--background: rgb(50,52,56);
+ 		--cardBG: rgb(100, 102, 106);
+ 		--text: rgba(255, 255, 255, 1);
+ 		--shadowColor: rgb(100, 100, 100);
+ 	}
+ }
 
 * {
 	scroll-margin-top: 35vh;
@@ -47,6 +48,9 @@
 }
 
 html, body {
+	--footerHeight: 100px;
+	--dictionaryText: "Словарь→";
+
  	scroll-behavior: smooth;
 	max-width: 100%;
 	overflow-x: hidden;
@@ -56,15 +60,14 @@ html, body {
 /* Standarts */
  .hidden { display: none; }
  .space-between { justify-content: space-between; }
- .br5 { display: block; height: 5px; width: 1px; }
- .br10 { display: block; height: 10px; width: 1px; }
- .br15 { display: block; height: 15px; width: 1px; }
- .br20 { display: block; height: 20px; width: 1px; }
- .br25 { display: block; height: 25px; width: 1px; }
- .br30 { display: block; height: 30px; width: 1px; }
- .h1,
- .h2,
- .h3 {
+ .br5, .br10, .br15, .br20, .br25, .br30 { display: block; width: 1px; }
+ .br5 { height: 5px; }
+ .br10 { height: 10px; }
+ .br15 { height: 15px; }
+ .br20 { height: 20px; }
+ .br25 { height: 25px; }
+ .br30 { height: 30px; }
+ .h1, .h2, .h3 {
 	color: var(--text);
 	margin-bottom: 6px;
  }
@@ -75,7 +78,7 @@ html, body {
   	 --padding: 20px;
   	 position: fixed;
   	 top: 0;
-  	 height: 103px;
+  	 height: 5.3rem;
   	 width: calc(100vw - (var(--padding) * 2));
   	 border-radius: 0 0 40px 40px / 30px;
   	 padding: 5px var(--padding) 5px var(--padding);
@@ -134,16 +137,6 @@ html, body {
     cursor: pointer;
     transition: background-color 0.3s ease 0s;
   }
-  body > header > #nav > li:active {
-    background-color: rgba(240, 237, 237, 0.65);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  @media not screen and (pointer: coarse){
-  	body > header > #nav > li:hover {
-    background-color: rgba(240, 237, 237, 0.65);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  	}
-  }
   body > header > #nav > li.current {
     background-color: rgba(120, 195, 120, 0.5);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -159,7 +152,7 @@ html, body {
   	border-radius: 20px;
   	margin: 20px;
   	padding: 30px;
-  	min-height: 256px;
+  	min-height: 250px;
   	color: mintcream;
   	box-shadow: 8px 8px 60px -35px black;
   }
@@ -177,8 +170,8 @@ html, body {
   }
 
   main {
-  	margin: 5% 120px 160px 11.5%;
-  	padding: 40px;
+  	margin: 5rem 11% calc(var(--footerHeight) + 50px) 12%;
+  	padding: 1.2em;
   	box-shadow: 2px 2px 60px -14px var(--shadowColor);
   	border-radius: 15px;
   	height: fit-content;
@@ -190,12 +183,12 @@ html, body {
   	line-height: 35px;
   }
   main img {
-  	min-width: 120px;
-  	min-height: 5vh;
+  	width: auto;
+  	height: auto;
   	max-width: 100%;
-  	max-height: 15vh;
+  	max-height: 30vh;
   }
-  main ul { margin-left: 50px; }
+  main ul { margin-left: 1.6rem; }
   #dict > main ul li { margin: 5px 0; }
   #dict > main ul li:target { color: skyblue; }
 
@@ -221,20 +214,6 @@ html, body {
   	top: -7px;
   	right: -10px;
   	z-index: 1;
-  }
-  @media not screen and (pointer: coarse){
-  	b.link:hover { border: rgba(0,0,0,0); }
-  	b.dict:hover { opacity: 0.9; }
-  	b.dict:hover::after {
-  		content: "Словарь→";
-  		position: absolute;
-  		top: 0px;
-  		right: -150px;
-  		background-color: rgb(86, 86, 86);
-  		border-radius: 5px;
-  		color: rgb(200, 10, 60);
-  		z-index: 1;
-  	}
   }
 
  /* Code */
@@ -273,7 +252,6 @@ html, body {
   	 --padding: 20px;
   	 position: fixed;
   	 width: calc(100vw - (var(--padding) * 2));
-  	 height: min(100px, 7.5vh);
   	 padding: var(--padding);
   	 border-radius: 40px 40px 0 0 / 30px;
   	 background-color: rgba(48, 56, 65, 0.85);
@@ -297,14 +275,73 @@ html, body {
     background-position: center;
 	position: fixed;
 	right: 20px;
-	bottom: min(120px, 13vh);
+	bottom: var(--footerHeight);
 	transition: opacity 0.2s;
  }
- #toStart:active {
- 	opacity: 0.65;
- }
+ 
+
+/* Not phone */
  @media not screen and (pointer: coarse){
- 	#toStart:hover {
- 		opacity: 0.65;
+ 	b.link:hover { border: rgba(0,0,0,0); }
+   	b.dict:hover { opacity: 0.9; }
+   	b.dict:hover::after {
+   		content: var(--dictionaryText);
+   		position: absolute;
+   		top: 0px;
+   		right: -150px;
+   		background-color: rgb(86, 86, 86);
+   		border-radius: 5px;
+   		color: rgb(200, 10, 60);
+   		z-index: 1;
+   	}
+ 
+   	body > header > #nav > li:hover {
+     	background-color: rgba(240, 237, 237, 0.65);
+     	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   	}
+ }
+
+/* Phone */
+ @media screen and (pointer: coarse){
+ 	* {
+   		font-size: 1rem;
  	}
+ 
+ 	body > header {
+ 		--padding: 5px;
+ 		width: calc(100% - (var(--padding) * 2));
+ 		padding: var(--padding);
+ 	}
+ 	body > header > #nav {
+ 		overflow-x: auto;
+ 	}
+   	body > header > #nav > li:active {
+   	  background-color: rgba(240, 237, 237, 0.65);
+   	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   	}
+
+   	.card { flex-direction: column; }
+   	.card > img {
+  		height: 100%;
+  		width: 100%;
+  		margin-right: 0;
+  	}
+
+   	span.h { font-size: 1.65rem; }
+   	span.h1 { font-size: 1.4rem; }
+   	span.h2 { font-size: 1.2rem; }
+ 
+   	main {
+   		margin-left: 1.2rem;
+   		margin-right: 1.2rem;
+   	}
+ 
+   	#toStart { 
+  		height: 50px;
+  		width: 50px;
+  		right: 4px;
+  	}
+  	#toStart:active {
+  		opacity: 0.65;
+  	}
  }
