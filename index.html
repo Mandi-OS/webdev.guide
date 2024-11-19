@@ -38,7 +38,15 @@
 				<span class="br30"></span>
 				<span class="br30"></span>
 				<span><hr><b>Все статьи:</b></span>			
-				<div class="card flex-line">
+				<div class="card">
+					<img src="storage/main/img/previews/siteWork.webp">
+					<span>
+						<b class="link siteWork">Работа сайта</b>
+						<span class="br10"></span>
+						Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript, также использующий концепцию сервер-клиент.
+					</span>
+				</div>
+				<div class="card">
 					<img src="storage/main/img/previews/siteWork.webp">
 					<span>
 						<b class="link siteWork">Работа сайта</b>
@@ -48,6 +56,7 @@
 				</div>
 			</main>
 			<footer>
+				<div class="hideFooter visible" onclick="hideFooter(this)">▼</div>
 				<span>
 					Сайт с полным руководством по базе <i>HTML</i>, <i>CSS</i> и <i>JavaScript</i>.<br>
 					Сверху меню со всеми темами, тут будет появляться описание выбранной темы.
@@ -145,6 +154,7 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 				</span>
 			</main>
 			<footer>
+				<div class="hideFooter visible" onclick="hideFooter(this)">▼</div>
 				<span>
 					Сайт является 3D укладкой 2D слоев, обычно стилизованный СSS и оснащенный JavaScript, также использующий концепцию сервер-клиент.
 				</span>
@@ -155,7 +165,7 @@ element.style.zIndex = "[уровень]"; // Через стили</code></pre>
 				<span class="h">Словарь</span>
 				<span class="br5" hidden></span>
 				<span class="h2">&nbsp &nbspТут подробно описаны все понятия, рассортированные по темам.</span><hr>
-				<span class="br30" hidden></span>
+				<span class="br20" hidden></span>
 				<span id="Basic" class="h2">Общее</span><hr>
 				<span>
 					<ul>
@@ -197,6 +207,7 @@ if (drinkCoffeeAtMornings) {
 				<span></span>
 			</main>
 			<footer>
+				<div class="hideFooter visible" onclick="hideFooter(this)">▼</div>
 				<span>
 					Coming...
 				</span>
@@ -207,6 +218,7 @@ if (drinkCoffeeAtMornings) {
 				<span></span>
 			</main>
 			<footer>
+				<div class="hideFooter visible" onclick="hideFooter(this)">▼</div>
 				<span>
 					Coming...
 				</span>
@@ -216,3 +228,4 @@ if (drinkCoffeeAtMornings) {
 	<button id="toStart" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
 </body>
 </html>
+
