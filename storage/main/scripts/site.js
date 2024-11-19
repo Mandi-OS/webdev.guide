@@ -12,11 +12,13 @@ const localScreens = document.querySelectorAll('.localScreen')
 translates = {
 	"ru": {
 		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер', 'dict': 'Словарь',
-		'devTools': 'DevTools'}
+		'devTools': 'DevTools'},
+		"dictionaryText": 'Словарь→'
 	},
 	"en": {
 		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server', 'dict': 'Dictionary',
-		'devTools': 'DevTools'}
+		'devTools': 'DevTools'},
+		"dictionaryText": 'Dictionary→'
 	}
 }
 
@@ -28,6 +30,8 @@ function readLocalStorage() {
 	// Subdomain_name
 	localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang')]["subdomain_name"]))
 	subdomain_name = JSON.parse(localStorage.getItem('subdomain_name'))
+	// CSS
+	document.body.style.setProperty('--dictionaryText', translates[localStorage.getItem('lang')]["dictionaryText"]);
 }
 
 // Fill header with local screen links
@@ -66,6 +70,8 @@ function setLocalScreen(screenId) {
   	setLocalBtn(screenId)
     // Remember last page user visited
     localStorage.setItem('last_page', screenId)
+    // Set toStart Btn to footer
+    setToStart()
 }
 
 function setLocalBtn(screenId) {
@@ -74,6 +80,7 @@ function setLocalBtn(screenId) {
 	localBtns.forEach(function(localBtn) {
         if (screenId + "Btn" === localBtn.id) {
             localBtn.classList.add('current')
+            localBtn.scrollIntoView()
         } else {
             localBtn.classList.remove('current')
         }
@@ -106,6 +113,15 @@ function setLocalBtn(screenId) {
  	})
  })
 
+ // Set #toStart bottom margin
+ function setToStart() {
+ 	let footer = document.querySelector('.localScreen:not(.hidden) > footer') ? document.querySelector('.localScreen:not(.hidden) > footer') : null
+ 	if (footer !== null) {
+ 		document.body.style.setProperty('--footerHeight', footer.offsetHeight + "px")
+ 	} else {
+		document.body.style.setProperty('--footerHeight', '15px')
+ 	}
+ }
 
 // Change language
  function selectLang(lang) {
@@ -121,4 +137,3 @@ function setLocalBtn(screenId) {
 		break
  	}
  }
- 
