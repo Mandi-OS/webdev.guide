@@ -12,13 +12,11 @@ const localScreens = document.querySelectorAll('.localScreen')
 translates = {
 	"ru": {
 		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер', 'dict': 'Словарь',
-		'devTools': 'DevTools'},
-		"dictionaryText": 'Словарь→'
+		'devTools': 'DevTools'}
 	},
 	"en": {
 		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server', 'dict': 'Dictionary',
-		'devTools': 'DevTools'},
-		"dictionaryText": 'Dictionary→'
+		'devTools': 'DevTools'}
 	}
 }
 
@@ -70,6 +68,8 @@ function setLocalScreen(screenId) {
     localStorage.setItem('last_page', screenId)
     // Set toStart Btn to footer
     setToStart()
+    // Clear location hash(anchor)
+    if (window.location.hash !== '') { window.location.assign('') }
 }
 
 function setLocalBtn(screenId) {
