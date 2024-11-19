@@ -69,7 +69,7 @@ function setLocalScreen(screenId) {
     // Set toStart Btn to footer
     setToStart()
     // Clear location hash(anchor)
-    if (window.location.hash !== '') { window.location.assign('') }
+    if (window.location.hash !== '') { window.location.hash = '' }
 }
 
 function setLocalBtn(screenId) {
