@@ -253,6 +253,7 @@ html, body {
   	 position: fixed;
   	 width: calc(100vw - (var(--padding) * 2));
   	 padding: var(--padding);
+  	 padding-top: 0 !important;
   	 border-radius: 40px 40px 0 0 / 30px;
   	 background-color: rgba(48, 56, 65, 0.85);
   	 color: whitesmoke;
@@ -261,6 +262,12 @@ html, body {
   	 z-index: 100;
   }
   footer::selection { background-color: rgba(0, 30, 60, 0.6);}
+  footer > .hideFooter {
+	width: 100%;
+	text-align: center;
+	user-select: none;
+	cursor: pointer;
+  }
 
  #toStart {
 	z-index: 101;
@@ -284,16 +291,6 @@ html, body {
  @media not screen and (pointer: coarse){
  	b.link:hover { border: rgba(0,0,0,0); }
    	b.dict:hover { opacity: 0.9; }
-   	b.dict:hover::after {
-   		content: var(--dictionaryText);
-   		position: absolute;
-   		top: 0px;
-   		right: -150px;
-   		background-color: rgb(86, 86, 86);
-   		border-radius: 5px;
-   		color: rgb(200, 10, 60);
-   		z-index: 1;
-   	}
  
    	body > header > #nav > li:hover {
      	background-color: rgba(240, 237, 237, 0.65);
