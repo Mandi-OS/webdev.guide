@@ -30,8 +30,6 @@ function readLocalStorage() {
 	// Subdomain_name
 	localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang')]["subdomain_name"]))
 	subdomain_name = JSON.parse(localStorage.getItem('subdomain_name'))
-	// CSS
-	document.body.style.setProperty('--dictionaryText', translates[localStorage.getItem('lang')]["dictionaryText"]);
 }
 
 // Fill header with local screen links
@@ -136,4 +134,11 @@ function setLocalBtn(screenId) {
  		location.href = "/webdevelop.guide/" + lang + "/index.html"
 		break
  	}
+ }
+
+// Hide Footer
+ function hideFooter(element) {
+ 	element.parentElement.style.transform = element.classList.contains('visible') ? 'translateY(calc(100% - 2ch))' : 'translateY(0)'
+ 	element.textContent = element.classList.contains('visible') ? '▲' : '▼'
+ 	element.classList.toggle('visible')
  }
