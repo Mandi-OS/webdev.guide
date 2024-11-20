@@ -12,11 +12,13 @@ const localScreens = document.querySelectorAll('.localScreen')
 translates = {
 	"ru": {
 		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер', 'dict': 'Словарь',
-		'devTools': 'DevTools'}
+		'devTools': 'DevTools'},
+		"dictionaryText": 'Словарь→'
 	},
 	"en": {
 		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server', 'dict': 'Dictionary',
-		'devTools': 'DevTools'}
+		'devTools': 'DevTools'},
+		"dictionaryText": 'Dictionary→'
 	}
 }
 
@@ -112,10 +114,13 @@ function setLocalBtn(screenId) {
  })
 
  // Set #toStart bottom margin
- function setToStart() {
+ function setToStart(footerOffset = 0) {
  	let footer = document.querySelector('.localScreen:not(.hidden) > footer') ? document.querySelector('.localScreen:not(.hidden) > footer') : null
+ 	let offset = 0
  	if (footer !== null) {
- 		document.body.style.setProperty('--footerHeight', footer.offsetHeight + "px")
+ 		offset += footer.offsetHeight
+ 		offset -= footerOffset
+ 		document.body.style.setProperty('--footerHeight', offset + "px")
  	} else {
 		document.body.style.setProperty('--footerHeight', '15px')
  	}
@@ -141,4 +146,8 @@ function setLocalBtn(screenId) {
  	element.parentElement.style.transform = element.classList.contains('visible') ? 'translateY(calc(100% - 2ch))' : 'translateY(0)'
  	element.textContent = element.classList.contains('visible') ? '▲' : '▼'
  	element.classList.toggle('visible')
+
+    const ch = parseFloat(getComputedStyle(element.parentElement).fontSize) / 2;
+    const offsetForBtn = element.classList.contains('visible') ? 0 : (element.parentElement.offsetHeight - 2 * ch - 13);
+    setToStart(offsetForBtn)
  }
