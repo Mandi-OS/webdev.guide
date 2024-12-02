@@ -3,7 +3,7 @@ function startApp() {
 	//selectLang(localStorage.getItem('lang'))
 	readLocalStorage()
 	loadHeader()
-  	setLocalBtn(localStorage.getItem('last_page'))
+  	setLocalScreen(localStorage.getItem('last_page'), true)
 	console.log("Site started succesfully!")
 }
 
@@ -11,29 +11,26 @@ let subdomain_name = {}
 const localScreens = document.querySelectorAll('.localScreen')
 translates = {
 	"ru": {
-		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'server': 'Сервер', 'dict': 'Словарь',
-		'devTools': 'DevTools'},
-		"dictionaryText": 'Словарь→'
+		"subdomain_name": {'home': 'Главная страница', 'siteWork': 'Работа сайта', 'network': 'Сеть', 'dict': 'Словарь',
+		'devTools': 'DevTools'}
 	},
 	"en": {
-		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'server': 'Server', 'dict': 'Dictionary',
-		'devTools': 'DevTools'},
-		"dictionaryText": 'Dictionary→'
+		"subdomain_name": {'home': 'Home', 'siteWork': 'Site Work', 'network': 'Network', 'dict': 'Dictionary',
+		'devTools': 'DevTools'}
 	}
 }
 
 function readLocalStorage() {
-	// Language
-	if (localStorage.getItem('lang') === null) { localStorage.setItem('lang', 'ru') }
-	// Last page
-	if (localStorage.getItem('last_page') === null) { localStorage.setItem('last_page', 'home') }
+	if (localStorage.getItem('lang') === null) { localStorage.setItem('lang', 'ru') } // Language
+	if (localStorage.getItem('last_page') === null) { localStorage.setItem('last_page', 'home') } // Last page
+	if (localStorage.getItem('last_hash') === null) { localStorage.setItem('last_hash', '') } // Last hash
 	// Subdomain_name
 	localStorage.setItem('subdomain_name', JSON.stringify(translates[localStorage.getItem('lang')]["subdomain_name"]))
 	subdomain_name = JSON.parse(localStorage.getItem('subdomain_name'))
 }
 
 // Fill header with local screen links
-function loadHeader() {
+ function loadHeader() {
 	const frame = document.querySelector('body > header > #nav')
 
 	localScreens.forEach(
@@ -49,10 +46,11 @@ function loadHeader() {
 	})
 
 	// Go to last page user visited
-	frame.querySelector('#' + localStorage.getItem('last_page') + "Btn").click()
-}
+	frame.querySelector('#' + localStorage.getItem('last_page') + "Btn").classList.add('current')
+    window.location.hash = localStorage.getItem('last_hash')
+ }
 
-function setLocalScreen(screenId) {
+function setLocalScreen(screenId, start=false) {
 	const screen = document.querySelector(`body > header > #nav #${screenId}`)
 
 	// Current  screen
@@ -66,12 +64,13 @@ function setLocalScreen(screenId) {
 
         })
   	setLocalBtn(screenId)
-    // Remember last page user visited
-    localStorage.setItem('last_page', screenId)
-    // Set toStart Btn to footer
-    setToStart()
+    localStorage.setItem('last_page', screenId) // Remember last page user visited
+    setToStart(document.querySelector('#' + screenId + ' > footer > .hideFooter')) // Set toStart Btn to footer
     // Clear location hash(anchor)
-    if (window.location.hash !== '') { window.location.hash = '' }
+    if (!start && window.location.hash !== '') {
+    	window.location.hash = ''
+    	localStorage.setItem('last_hash', '')
+    }
 }
 
 function setLocalBtn(screenId) {
@@ -98,27 +97,39 @@ function setLocalBtn(screenId) {
  	}
  })
 
-// Link work
+// Links work
  const links = document.querySelectorAll('.link')
  links.forEach(function(link) {
  	link.addEventListener('click', function() {
- 		setLocalScreen(link.classList[1])
+ 		if (document.querySelector('.localScreen:not(.hidden)').id !== link.classList[1]) {
+ 			setLocalScreen(link.classList[1])
+ 		}
+ 		if (link.classList[2]) {
+ 			window.location.hash = '#' + link.classList[2]
+		 	localStorage.setItem('last_hash', link.classList[2]) // Remember last hash
+ 		}
  	})
  })
  const dicts = document.querySelectorAll('.dict')
  dicts.forEach(function(dict) {
  	dict.addEventListener('click', function() {
- 		setLocalScreen('dict')
- 		location.href = '#' + dict.classList[1]
+ 		if (document.querySelector('.localScreen:not(.hidden)').id !== 'dict') {
+ 			setLocalScreen('dict')
+ 		}
+ 		if (dict.classList[1]) {
+ 			window.location.hash = '#' + dict.classList[1]
+			localStorage.setItem('last_hash', dict.classList[1]) // Remember last hash
+		}
  	})
  })
 
- // Set #toStart bottom margin
- function setToStart(footerOffset = 0) {
+// Set #toStart bottom margin
+ function setToStart(hideElement) {
  	let footer = document.querySelector('.localScreen:not(.hidden) > footer') ? document.querySelector('.localScreen:not(.hidden) > footer') : null
  	let offset = 0
- 	if (footer !== null) {
- 		offset += footer.offsetHeight
+ 	if (footer !== null && hideElement !== null) {
+ 		const footerOffset = hideElement.classList.contains('visible') ? 0 : (hideElement.parentElement.offsetHeight - 2 * (parseFloat(getComputedStyle(hideElement.parentElement).fontSize) / 2) - 13); // Only thing I dont know how is calculating
+		offset += footer.offsetHeight
  		offset -= footerOffset
  		document.body.style.setProperty('--footerHeight', offset + "px")
  	} else {
@@ -147,7 +158,10 @@ function setLocalBtn(screenId) {
  	element.textContent = element.classList.contains('visible') ? '▲' : '▼'
  	element.classList.toggle('visible')
 
-    const ch = parseFloat(getComputedStyle(element.parentElement).fontSize) / 2;
-    const offsetForBtn = element.classList.contains('visible') ? 0 : (element.parentElement.offsetHeight - 2 * ch - 13);
-    setToStart(offsetForBtn)
+    setToStart(element)
  }
+
+// Set target _blank to all 'a' elements
+ document.querySelectorAll('a').forEach(function(link) {
+ 	if (!link.target) { link.target = "_blank" }
+ })
