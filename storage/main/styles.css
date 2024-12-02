@@ -27,16 +27,18 @@
  		--background: lavenderblush;
  		--cardBG: rgb(50, 50, 50);
  		--text: rgba(0, 0, 0, 1);
- 		--shadowColor: rgb();
+ 		--shadowColor: rgba(0, 0, 0, 0.7);
  	}
+	*::selection { background-color: rgba(120, 150, 180, 0.7);}
  }
- @media (prefers-color-scheme: dark) {
+ @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
  	:root {
  		--background: rgb(50,52,56);
  		--cardBG: rgb(100, 102, 106);
  		--text: rgba(255, 255, 255, 1);
- 		--shadowColor: rgb(100, 100, 100);
+ 		--shadowColor: rgba(100, 100, 100, 1);
  	}
+	*::selection { background-color: rgba(0, 30, 60, 0.7);}
  }
 
 * {
@@ -49,8 +51,6 @@
 
 html, body {
 	--footerHeight: 100px;
-	--dictionaryText: "Словарь→";
-
  	scroll-behavior: smooth;
 	max-width: 100%;
 	overflow-x: hidden;
@@ -148,25 +148,28 @@ html, body {
   .card {
   	display: flex;
   	flex-direction: row;
-  	background-color: var(--cardBG);
   	border-radius: 20px;
   	margin: 20px;
   	padding: 30px;
   	min-height: 250px;
+  	background-color: var(--cardBG);
   	color: mintcream;
   	box-shadow: 8px 8px 60px -35px black;
   }
 
   .card > img {
-  	height: min(50%, 320px);
-  	width: min(50%, 320px);
+  	height: 100%;
+  	width: fit-content;
   	margin-right: 10px;
   }
 
   .card span {
-  	color: var(--text);
   	font-size: 1.3rem;
   	margin-bottom: 5px;
+  }
+  .card span, .card span * {
+  	color: rgba(255, 255, 255, 1);
+  	border-color: rgba(255, 255, 255, 1) !important;
   }
 
   main {
@@ -190,16 +193,17 @@ html, body {
   }
   main ul { margin-left: 1.6rem; }
   #dict > main ul li { margin: 5px 0; }
-  #dict > main ul li:target { color: skyblue; }
+  li:target, li:target *, span:target, span:target * { color: skyblue !important; }
 
-  span.h { font-size: 2rem; }
-  span.h1 { font-size: 1.65rem; }
-  span.h2 {
-  	font-size: 1.4rem;
-  	font-weight: bold;
+  span.h, span.h * { font-size: 2rem !important; }
+  span.h1, span.h1 * { font-size: 1.65rem !important; }
+  span.h2, span.h2 * {
+  	font-size: 1.4rem !important;
+  	font-weight: bold !important;
   }
   span.mtop { margin-top: 17px; }
 
+ /* Links */
   b.link,
   b.dict {
   	position: relative;
@@ -208,12 +212,16 @@ html, body {
   	z-index: 0;
   }
   b.link { border-bottom: 4px dotted var(--text); }
+  b.dict { margin-right: 12px; }
   b.dict::before {
   	content: "*";
   	position: absolute;
   	top: -7px;
   	right: -10px;
   	z-index: 1;
+  }
+  a, a:visited {
+  	color: var(--text);
   }
 
  /* Code */
@@ -261,7 +269,6 @@ html, body {
   	 bottom: 0;
   	 z-index: 100;
   }
-  footer::selection { background-color: rgba(0, 30, 60, 0.6);}
   footer > .hideFooter {
 	width: 100%;
 	text-align: center;
