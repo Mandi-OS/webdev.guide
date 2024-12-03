@@ -142,12 +142,12 @@ function setLocalBtn(screenId) {
  	switch (lang) {
 	case "ru":
 		localStorage.setItem('lang', lang)
-		location.href = "/webdevelop.guide/"
+		location.href = "/webdev.guide/"
 		break
 	default:
 		localStorage.setItem('lang', lang)
  		localStorage.setItem('subdomain_name', JSON.stringify(translates[lang]["subdomain_name"]))
- 		location.href = "/webdevelop.guide/" + lang + "/index.html"
+ 		location.href = "/webdev.guide/" + lang + "/index.html"
 		break
  	}
  }
